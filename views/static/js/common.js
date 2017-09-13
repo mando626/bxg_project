@@ -1,13 +1,4 @@
 
-	//NProgress.start();
-  //
-	//NProgress.done();
-  //
-	//$('.navs ul').prev('a').on('click', function () {
-	//	$(this).next().slideToggle();
-	//});
-
-
 	//使用PHPSESSID来作为登录的依据
 	define(["jquery","template","cookie"],function($,template){
 		$(function(){
@@ -33,6 +24,23 @@
 				var html = template("profile_tpl", userinfo);
 				$("#profile").html(html);
 			}
+
+
+
+
+			 //退出功能的实现
+   $("#logout_btn").click(function(){
+   	//1向后台发送ajax请求，请求退出
+   	$.ajax({
+   		url:"/api/logout",
+   		type:"post",
+   		success:function(data){
+   			if(data.code == 200){
+   				location.href = "/dashboard/login"
+   			}
+   		}
+   	})
+   })
 
 		})
 	})
