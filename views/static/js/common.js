@@ -1,13 +1,4 @@
 
-	//NProgress.start();
-  //
-	//NProgress.done();
-  //
-	//$('.navs ul').prev('a').on('click', function () {
-	//	$(this).next().slideToggle();
-	//});
-
-
 	//使用PHPSESSID来作为登录的依据
 	define(["jquery","template","cookie"],function($,template){
 		$(function(){
@@ -33,6 +24,43 @@
 				var html = template("profile_tpl", userinfo);
 				$("#profile").html(html);
 			}
+
+
+    
+    //退出登录的点击事件
+    $("#logout_btn").click(function(){
+    	$.ajax({
+         url:"/api/logout",
+         type:"post",
+         success:function(data){
+         	if(data.code == 200){
+         		location.href = "/dashboard/login"
+         	}
+         }
+    	})
+    })
+
+
+
+      //课程管理的点击事件
+      $(".navs>ul>li>ul").parent().click(function(){
+         $(this).children("ul").stop().slideToggle();
+
+      })
+       
+       //让当前链接的菜单项高亮
+       //console.log($(".navs a"))
+
+       $(".navs a").each(function(i,e){
+            console.log($(e).attr("href"))
+         if($(e).attr("href") == location.pathname){
+          
+            $(e).addClass("active");
+         }
+  
+       })
+
+
 
 		})
 	})
