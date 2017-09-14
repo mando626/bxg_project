@@ -41,7 +41,35 @@ $(function(){
 
 
     //注销和启用的切换
-    
+    $("#teacher_list_tbody").on("click",".btn-status",function(){
+      var id = $(this).parent().data("id");
+      var status = $(this).data("status");
+      var that = $(this);
+      $.ajax({
+      	url:"/api/teacher/handle",
+      	type:"post",
+      	data:{
+      		tc_id:id,   //携带自定义属性id进入
+      		tc_status:status  //携带自定义属性status进入
+      	},
+      	success:function(data){
+      		if(data.code == 200){
+             if(data.result.tc_status ==1 ){
+             	that.removeClass("btn-warning").addClass("btn-success").text("启用");
+             }else{
+             		that.removeClass("btn-success").addClass("btn-warning").text("注销");
+             }
+
+
+             that.data("status",data.result.tc_status);
+      		}
+      	}
+      })
+
+
+
+
+    })
    
 
 
