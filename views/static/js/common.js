@@ -1,7 +1,9 @@
 
 	//使用PHPSESSID来作为登录的依据
-	define(["jquery","template","cookie"],function($,template){
+	define(["jquery","template","nprogress","cookie"],function($,template,Nprogress){
+      Nprogress.start();
 		$(function(){
+      Nprogress.done();
 			//判断用户是否登录了，如果没有登录，就给他跳回到登录页
 
 			//判断用户是否登录的依据，最好是通过向后台发送请求，问后台用户是否登录，这才是最严谨的判断登录的方式，当前项目中没有提供接口，所以不能这么做
@@ -59,6 +61,22 @@
          }
   
        })
+
+
+
+       //注册ajax的全局事件
+
+       $(document).ajaxStart(function(){
+           Nprogress.start();
+       })
+
+       $(document).ajaxStop(function(){
+           Nprogress.done();
+       })
+
+
+
+
 		})
 	})
 
