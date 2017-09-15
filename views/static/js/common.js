@@ -54,7 +54,7 @@
        //console.log($(".navs a"))
 
        $(".navs a").each(function(i,e){
-            console.log($(e).attr("href"))
+            //console.log($(e).attr("href"))
          if($(e).attr("href") == location.pathname){
           
             $(e).addClass("active");
