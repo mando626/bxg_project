@@ -14,7 +14,9 @@ require.config({
     datepicker:"./bootstrap-datepicker/js/bootstrap-datepicker",      //日期插件
     datepickerCN:"./bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min",      //日期的语言插件
     validate:"./jquery-validate/jquery-validate",      //正则表单插件
-    ckeditor:"./ckeditor/ckeditor"      //富文本编辑器插件
+    ckeditor:"./ckeditor/ckeditor",      //富文本编辑器插件
+    region:"./jquery-region/jquery.region",    //三级联动的插件
+    uploadify: "./uploadify/jquery.uploadify" //异步图片上传
   },
    shim:{
    	bootstrap:{
@@ -28,6 +30,9 @@ require.config({
     },
     ckeditor:{
      exports:"CKEDITOR"   //返回值
+    },
+    uploadify: {
+      deps:["jquery"]
     }
 
    }
